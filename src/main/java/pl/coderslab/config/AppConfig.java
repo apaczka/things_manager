@@ -5,6 +5,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalEntityManagerFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -13,10 +14,12 @@ import org.springframework.web.servlet.LocaleContextResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
-
+import pl.coderslab.converter.DateConverter;
+import pl.coderslab.converter.InstitutionConverter;
 
 
 import javax.persistence.EntityManagerFactory;
@@ -53,26 +56,21 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         JpaTransactionManager tm = new JpaTransactionManager(emf);
         return tm; }
 
-    //
-//    @Override
-//    public void addFormatters(FormatterRegistry registry) {
-//        registry.addConverter(getFamilyConverter());
-//        registry.addConverter(getDateConverter());
-//        registry.addConverter(getMemberConverter());
-//    }
-//    @Bean
-//    public FamilyConverter getFamilyConverter () {
-//        return new FamilyConverter();
-//    }
-//    @Bean
-//    public DateConverter getDateConverter(){
-//        return new DateConverter();
-//    }
-//    //
-//    @Bean
-//    public MemberConverter getMemberConverter(){
-//        return new MemberConverter();
-//    }
+
+    @Override
+    public void addFormatters(FormatterRegistry registry) {
+        registry.addConverter(getInstitutionConverter());
+        registry.addConverter(getDateConverter());
+
+    }
+    @Bean
+    public InstitutionConverter getInstitutionConverter () {
+        return new InstitutionConverter();
+    }
+    @Bean
+    public DateConverter getDateConverter(){
+        return new DateConverter();
+    }
 
     @Bean(name="localeResolver")
     public LocaleContextResolver getLocaleContextResolver() {
@@ -85,7 +83,12 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         return new LocalValidatorFactoryBean();
     }
 
-
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry
+                .addResourceHandler("/resources/**")
+                .addResourceLocations("/resources/");
+    }
 
 }
 

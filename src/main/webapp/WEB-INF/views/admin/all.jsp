@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html lang="pl">
@@ -6,9 +7,24 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {background-color:#f5f5f5;}
+    </style>
     <title>Document</title>
     <link rel="stylesheet" href="/resources/css/style.css"/>
 </head>
+<body>
 <header>
     <nav class="container container--70">
         <ul class="nav--actions">
@@ -26,33 +42,32 @@
     </nav>
 </header>
 
-<section class="login-page">
-    <h2>Załóż konto</h2>
-    <form:form method="post" modelAttribute="user">
-        <div class="form-group">
-            <form:input path="firstName" placeholder="imię"/>
-            <form:errors path="firstName" cssClass="error" element="div"/>
-        </div>
-        <div class="form-group">
-            <form:input path="lastname" placeholder="nazwisko"/>
-            <form:errors path="lastname" cssClass="error" element="div"/>
-        </div>
-        <div class="form-group">
-            <form:input type="email" path="email" placeholder="email"/>
-            <form:errors path="email" cssClass="error" element="div"/>
-        </div>
-        <div class="form-group">
-            <form:input type="password" path="password" placeholder="Hasło" />
-            <form:errors path="password" cssClass="error" element="div"/>
-        </div>
+<div class="different">
+<h2> Administratorzy</h2>
+<table class="tt">
+    <tr>
+    <th>Imię</th>
+    <th>Nazwisko</th>
+    <th>Email</th>
+    <th>Edytuj</th>
+        <th>Usuń</th>
+    </tr>
+    <c:forEach var="admin" items="${admins}">
+      <tr>
+
+            <td>${admin.firstName}</td>
+            <td>${admin.lastname}</td>
+            <td>${admin.email}</td>
+            <td><a href="/admin/edit/${admin.id}"><img src="/resources/images/pencil.svg"/></a></td>
+            <td><a href="/admin/remove/${admin.id}"><img src="/resources/images/reycle-bin.svg"/></a></td>
 
 
-        <div class="form-group form-group--buttons">
-            <a href="login.html" class="btn btn--without-border">Zaloguj się</a>
-            <button class="btn" type="submit">Załóż konto</button>
-        </div>
-    </form:form>
-</section>
+      </tr>
+    </c:forEach>
+</table>
+</div>
+
+
 
 <footer>
     <div class="contact">
@@ -81,15 +96,14 @@
         <span class="bottom-line--copy">Copyright &copy; 2018</span>
         <div class="bottom-line--icons">
             <a href="#" class="btn btn--small"
-            ><img src="images/icon-facebook.svg"
+            ><img src="/resources/images/icon-facebook.svg"
             /></a>
             <a href="#" class="btn btn--small"
-            ><img src="images/icon-instagram.svg"
+            ><img src="/resources/images/icon-instagram.svg"
             /></a>
         </div>
     </div>
 </footer>
+
 </body>
 </html>
-
-

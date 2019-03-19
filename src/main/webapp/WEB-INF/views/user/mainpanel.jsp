@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>Document</title>
-    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="/resources/css/style.css"/>
 </head>
 <body>
 <header class="header--form-page">
     <nav class="container container--70">
         <ul class="nav--actions">
             <li class="logged-user">
-                Witaj Agata
+                Witaj ${user.firstName}
                 <ul class="dropdown">
                     <li><a href="#">Profil</a></li>
                     <li><a href="#">Ustawienia</a></li>
@@ -44,7 +44,7 @@
             </h1>
 
             <ul class="slogan--buttons">
-                <li><a href="#" class="btn btn--large">Oddaj rzeczy</a></li>
+                <li><a href="/donation/add" class="btn btn--large">Oddaj rzeczy</a></li>
                 <li><a href="#" class="btn btn--large">Zorganizuj zbiórkę</a></li>
             </ul>
         </div>

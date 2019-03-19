@@ -34,6 +34,8 @@ public class Donation {
     private LocalDate date;
     @NotNull
     private LocalTime time;
+    private LocalDate created;
+    private boolean given;
     @ManyToOne
     private User user;
     @ManyToOne
@@ -125,6 +127,22 @@ public class Donation {
 
     public void setInstitution(Institution institution) {
         this.institution = institution;
+    }
+
+    public boolean isGiven() {
+        return given;
+    }
+
+    public void setGiven(boolean given) {
+        this.given = given;
+    }
+
+    public LocalDate getCreated() {
+        return created;
+    }
+
+    public void setCreated(LocalDate created) {
+        this.created = created;
     }
 
     @Override

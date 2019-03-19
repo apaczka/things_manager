@@ -9,6 +9,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="/resources/css/style.css"/>
 </head>
+<body>
 <header>
     <nav class="container container--70">
         <ul class="nav--actions">
@@ -28,7 +29,8 @@
 
 <section class="login-page">
     <h2>Załóż konto</h2>
-    <form:form method="post" modelAttribute="user">
+    <form:form method="post" modelAttribute="user" action="/admin/edit">
+        <form:hidden path="id"/>
         <div class="form-group">
             <form:input path="firstName" placeholder="imię"/>
             <form:errors path="firstName" cssClass="error" element="div"/>
@@ -49,7 +51,7 @@
 
         <div class="form-group form-group--buttons">
             <a href="login.html" class="btn btn--without-border">Zaloguj się</a>
-            <button class="btn" type="submit">Załóż konto</button>
+            <button class="btn" type="submit">Zapisz</button>
         </div>
     </form:form>
 </section>
@@ -91,5 +93,4 @@
 </footer>
 </body>
 </html>
-
 

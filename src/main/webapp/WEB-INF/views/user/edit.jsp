@@ -7,12 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>Document</title>
-    <link rel="stylesheet" href="/resources/css/style.css"/>
+    <link rel="stylesheet" href="../css/style.css"/>
 </head>
 <header>
     <nav class="container container--70">
         <ul class="nav--actions">
-            <li><a href="#">Zaloguj</a></li>
+            <li><a href="#">Edytuj</a></li>
             <li class="highlighted"><a href="#">Załóż konto</a></li>
         </ul>
 
@@ -29,6 +29,7 @@
 <section class="login-page">
     <h2>Załóż konto</h2>
     <form:form method="post" modelAttribute="user">
+        <form:hidden path="id"/>
         <div class="form-group">
             <form:input path="firstName" placeholder="imię"/>
             <form:errors path="firstName" cssClass="error" element="div"/>
@@ -91,5 +92,4 @@
 </footer>
 </body>
 </html>
-
 

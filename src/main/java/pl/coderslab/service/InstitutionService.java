@@ -29,4 +29,16 @@ public class InstitutionService {
         institutions =institutionRepository.findAll();
         return institutions;
     }
+    public Institution findById(Long id){
+        return institutionRepository.findOne(id);
+    }
+    public List<Institution> searchByLocationAndDesc(String location, String desc){
+         List<Institution> institutions=institutionRepository.findByLocationAndDescription(location, desc);
+return institutions;
 }
+
+public Institution searchByname(String name){
+       return institutionRepository.findByName(name);
+}
+}
+

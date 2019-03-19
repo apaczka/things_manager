@@ -9,7 +9,7 @@ import org.springframework.web.context.support.AnnotationConfigWebApplicationCon
 import org.springframework.web.servlet.DispatcherServlet;
 
 import pl.coderslab.config.AppConfig;
-
+import pl.coderslab.security.SecurityConfig;
 
 
 import javax.servlet.ServletContext;
@@ -30,6 +30,7 @@ public class AppInitializer implements WebApplicationInitializer {
         AnnotationConfigWebApplicationContext ctx =
                 new AnnotationConfigWebApplicationContext();
         ctx.register(AppConfig.class);
+        ctx.register(SecurityConfig.class);
         ctx.setServletContext(container);
 
         ServletRegistration.Dynamic servlet =

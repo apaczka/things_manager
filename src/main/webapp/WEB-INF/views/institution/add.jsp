@@ -27,29 +27,25 @@
 </header>
 
 <section class="login-page">
-    <h2>Załóż konto</h2>
-    <form:form method="post" modelAttribute="user">
+    <h2>Dodaj administratora</h2>
+    <form:form method="post" modelAttribute="institution">
         <div class="form-group">
-            <form:input path="firstName" placeholder="imię"/>
-            <form:errors path="firstName" cssClass="error" element="div"/>
+            <form:input path="name" placeholder="nazwa"/>
+            <form:errors path="name" cssClass="error" element="div"/>
         </div>
         <div class="form-group">
-            <form:input path="lastname" placeholder="nazwisko"/>
-            <form:errors path="lastname" cssClass="error" element="div"/>
+            <form:input path="location" placeholder="miasto"/>
+            <form:errors path="location" cssClass="error" element="div"/>
         </div>
         <div class="form-group">
-            <form:input type="email" path="email" placeholder="email"/>
-            <form:errors path="email" cssClass="error" element="div"/>
+            <form:select path="description">
+                <form:option value="0" label="--Please Select--"/>
+                <form:options items="${categories}"/>
+            </form:select>
         </div>
-        <div class="form-group">
-            <form:input type="password" path="password" placeholder="Hasło" />
-            <form:errors path="password" cssClass="error" element="div"/>
-        </div>
-
 
         <div class="form-group form-group--buttons">
-            <a href="login.html" class="btn btn--without-border">Zaloguj się</a>
-            <button class="btn" type="submit">Załóż konto</button>
+            <button class="btn" type="submit">Dodaj</button>
         </div>
     </form:form>
 </section>
@@ -60,10 +56,10 @@
         <h3>Formularz kontaktowy</h3>
         <form>
             <div class="form-group form-group--50">
-                <input type="text" name="name" placeholder="Imię" />
+                <input type="text" name="name" placeholder="Imię"/>
             </div>
             <div class="form-group form-group--50">
-                <input type="text" name="surname" placeholder="Nazwisko" />
+                <input type="text" name="surname" placeholder="Nazwisko"/>
             </div>
 
             <div class="form-group">
@@ -91,5 +87,4 @@
 </footer>
 </body>
 </html>
-
 

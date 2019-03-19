@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>Document</title>
-    <link rel="stylesheet" href="../css/style.css"/>
+    <link rel="stylesheet" href="/resources/css/style.css"/>
 </head>
 <header>
     <nav class="container container--70">
@@ -27,7 +27,7 @@
 </header>
 
 <section class="login-page">
-<h2>Dodaj użytkownika</h2>
+<h2>Dodaj administratora</h2>
 <form:form method="post" modelAttribute="user">
     <div class="form-group">
     <form:input path="firstName" placeholder="imię"/>

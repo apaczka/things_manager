@@ -10,20 +10,25 @@
 
     <packaging>war</packaging>
     <properties>
-        <org.springframework.version>4.3.7.RELEASE</org.springframework.version>
+        <org.springframework.version>5.0.6.RELEASE</org.springframework.version>
         <failOnMissingWebXml>false</failOnMissingWebXml>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <spring.security.version>5.0.6.RELEASE</spring.security.version>
+        <servlet.version>4.0.1</servlet.version>
     </properties>
 
     <dependencies>
         <dependency><groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>${org.springframework.version}</version></dependency>
-        <dependency><groupId>javax.servlet</groupId>
+            <version>${org.springframework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>3.1.0</version>
-            <scope>provided</scope> </dependency>
+            <version>${servlet.version}</version>
+            <scope>provided</scope>
+        </dependency>
         <dependency><groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
             <version>1.2</version></dependency>
@@ -37,7 +42,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
-            <version>4.3.7.RELEASE</version>
+            <version>5.0.6.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
@@ -64,10 +69,23 @@
             <artifactId>spring-context-support</artifactId>
             <version>5.1.3.RELEASE</version>
         </dependency>
+
+
         <dependency>
-            <groupId>javax.mail</groupId>
-            <artifactId>mail</artifactId>
-            <version>1.4.7</version>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${spring.security.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${spring.security.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>5.0.6.RELEASE</version>
         </dependency>
 
 
