@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import pl.coderslab.model.Institution;
 import pl.coderslab.repository.InstitutionRepository;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,9 +37,29 @@ public class InstitutionService {
          List<Institution> institutions=institutionRepository.findByLocationAndDescription(location, desc);
 return institutions;
 }
+public List<Institution>searchByLocationAndDescAndName(String location, String desc, String name){
+         List<Institution> institutions = institutionRepository.findByLocationOrDescriptionOrName(location, desc, name);
+             return institutions;
+}
 
 public Institution searchByname(String name){
        return institutionRepository.findByName(name);
 }
+public List<Institution> searchByLocation(String location){
+        List<Institution> institutions = institutionRepository.findByLocation(location);
+        return institutions;
+}
+public List<Institution> searchByDescription(String desc) {
+    List<Institution> institutions = institutionRepository.findByDescription(desc);
+    return institutions;
+}
+    public List<Institution> searchByNameAndDescription(String name, String desc) {
+        List<Institution> institutions = institutionRepository.findByNameAndDescription(name, desc);
+        return institutions;
+    }
+    public List<Institution> searchByNameAndLocation(String name, String location) {
+        List<Institution> institutions = institutionRepository.findByNameAndLocation(name, location);
+        return institutions;
+    }
 }
 

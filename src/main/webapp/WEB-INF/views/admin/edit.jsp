@@ -13,24 +13,25 @@
 <header>
     <nav class="container container--70">
         <ul class="nav--actions">
-            <li><a href="#">Zaloguj</a></li>
-            <li class="highlighted"><a href="#">Załóż konto</a></li>
+            <li><a href="/admin/mainpanel">Panel główny</a></li>
+            <li class="highlighted"><a href="/logout">Wyloguj</a></li>
         </ul>
 
         <ul>
-            <li><a href="#">Start</a></li>
+            <li><a href="/">Start</a></li>
             <li><a href="#">O co chodzi?</a></li>
             <li><a href="#">O nas</a></li>
-            <li><a href="#">Fundacje i organizacje</a></li>
+            <li><a href="/institution/all">Fundacje i organizacje</a></li>
             <li><a href="#">Kontakt</a></li>
         </ul>
     </nav>
 </header>
 
 <section class="login-page">
-    <h2>Załóż konto</h2>
+    <h2>Zmień dane</h2>
     <form:form method="post" modelAttribute="user" action="/admin/edit">
         <form:hidden path="id"/>
+        <form:hidden path="roles" value="${roleId}"/>
         <div class="form-group">
             <form:input path="firstName" placeholder="imię"/>
             <form:errors path="firstName" cssClass="error" element="div"/>
@@ -50,7 +51,7 @@
 
 
         <div class="form-group form-group--buttons">
-            <a href="login.html" class="btn btn--without-border">Zaloguj się</a>
+            <a href="/login" class="btn btn--without-border">Zaloguj się</a>
             <button class="btn" type="submit">Zapisz</button>
         </div>
     </form:form>

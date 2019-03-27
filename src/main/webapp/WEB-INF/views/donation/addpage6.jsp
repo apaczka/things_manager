@@ -15,12 +15,11 @@
     <nav class="container container--70">
         <ul class="nav--actions">
             <li class="logged-user">
-                Witaj Agata
+                Witaj ${user.firstName}
                 <ul class="dropdown">
-                    <li><a href="#">Profil</a></li>
-                    <li><a href="#">Ustawienia</a></li>
-                    <li><a href="#">Moje zbiórki</a></li>
-                    <li><a href="#">Wyloguj</a></li>
+                    <li><a href="/edit/${user.id}">Edytuj profil</a></li>
+                    <li><a href="/donation/all">Moje dary</a></li>
+                    <li><a href="/logout">Wyloguj</a></li>
                 </ul>
             </li>
         </ul>
@@ -30,7 +29,7 @@
             <li><a href="#" class="btn btn--without-border">O co chodzi?</a></li>
             <li><a href="#" class="btn btn--without-border">O nas</a></li>
             <li>
-                <a href="#" class="btn btn--without-border"
+                <a href="/institution/all" class="btn btn--without-border"
                 >Fundacje i organizacje</a
                 >
             </li>
@@ -66,123 +65,103 @@
     </div>
 </header>
 
-<section class="form--steps">
-    <div class="form--steps-instructions">
-        <div class="form--steps-container">
-            <h3>Ważne!</h3>
-            <p data-step="1" class="active">
-                Uzupełnij szczegóły dotyczące Twoich rzeczy. Dzięki temu będziemy
-                wiedzieć komu najlepiej je przekazać.
-            </p>
-            <p data-step="2">
-                Uzupełnij szczegóły dotyczące Twoich rzeczy. Dzięki temu będziemy
-                wiedzieć komu najlepiej je przekazać.
-            </p>
-            <p data-step="3">
-                Jeśli wiesz komu chcesz pomóc, możesz wpisać nazwę tej organizacji w
-                wyszukiwarce. Możesz też filtrować organizacje po ich lokalizacji
-                bądź celu ich pomocy.
-            </p>
-            <p data-step="4">
-                Na podstawie Twoich kryteriów oraz rzeczy, które masz do oddania
-                wybraliśmy organizacje, którym możesz pomóc. Wybierz jedną, do
-                której trafi Twoja przesyłka.
-            </p>
-            <p data-step="5">Podaj adres oraz termin odbioru rzeczy.</p>
+
+<div class="mydiv">
+    <!-- STEP 6 -->
+
+
+    <div class="moja">
+
+
+        <h3 style="font-size: 25px">Podsumowanie Twojej darowizny</h3>
+        <div class="form-section">
+
+            <h4>Oddajesz:</h4>
+            <ul>
+                <li>
+                    <span class="bag"></span>
+                    <span class="summary--text"
+                    >${page2.numberOfBags} worki ${page1.category}</span
+                    >
+                </li>
+
+                <li>
+                    <span class="icon icon-hand"></span>
+                    <span class="summary--text"
+                    >Dla ${page4.name} w ${page4.location}</span
+                    >
+                </li>
+            </ul>
         </div>
+
+
+        <h4>Adres odbioru:</h4>
+        <ul>
+            <li>${page5.street}</li>
+            <li>${page5.city}</li>
+            <li>${page5.postalCode}</li>
+            <li>${page5.phoneNumber}</li>
+        </ul>
+
+
+    <div class="form-section--column">
+        <h4>Termin odbioru:</h4>
+        <ul>
+            <li>${page5.date}</li>
+            <li>${page5.time}</li>
+            <li>Brak uwag</li>
+        </ul>
     </div>
+</div>
 
-    <div class="form--steps-container">
-        <div class="form--steps-counter">Krok <span>2</span>/5</div>
-        <!-- STEP 6 -->
 
-        <div data-step="6">
-            <h3>Podsumowanie Twojej darowizny</h3>
+<div class="form-group form-group--buttons">
+    <a href="/donation/page5/edit">
+        <button type="button" class="btn prev-step">Wstecz</button>
+    </a>
+    <a href="/donation/page6">
+        <button class="btn">Potwierdzam</button>
+    </a>
+</div>
+</div>
 
-            <div class="summary">
-                <div class="form-section">
-                    <h4>Oddajesz:</h4>
-                    <ul>
-                        <li>
-                            <span class="icon icon-bag"></span>
-                            <span class="summary--text"
-                            >${page2.numberOfBags} worki ${page1.category}</span
-                            >
-                        </li>
 
-                        <li>
-                            <span class="icon icon-hand"></span>
-                            <span class="summary--text"
-                            >Dla ${page4.name} w ${page4.location}</span
-                            >
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="form-section form-section--columns">
-                    <div class="form-section--column">
-                        <h4>Adres odbioru:</h4>
-                        <ul>
-                            <li>${page5.street}</li>
-                            <li>${page5.city}</li>
-                            <li>${page5.postalCode}</li>
-                            <li>${page5.phoneNumber}</li>
-                        </ul>
-                    </div>
-
-                    <div class="form-section--column">
-                        <h4>Termin odbioru:</h4>
-                        <ul>
-                            <li>${page5.date}</li>
-                            <li>${page5.time}</li>
-                            <li>Brak uwag</li>
-                        </ul>
-                    </div>
-                </div>
+<footer>
+    <div class="contact">
+        <h2>Skontaktuj się z nami</h2>
+        <h3>Formularz kontaktowy</h3>
+        <form class="form--contact">
+            <div class="form-group form-group--50">
+                <input type="text" name="name" placeholder="Imię"/>
+            </div>
+            <div class="form-group form-group--50">
+                <input type="text" name="surname" placeholder="Nazwisko"/>
             </div>
 
-            <div class="form-group form-group--buttons">
-                <a href="/donation/page5/edit"><button type="button" class="btn prev-step">Wstecz</button></a>
-                <a href="/donation/page6"><button class="btn">Potwierdzam</button></a>
-            </div>
-        </div>
-
-        <footer>
-            <div class="contact">
-                <h2>Skontaktuj się z nami</h2>
-                <h3>Formularz kontaktowy</h3>
-                <form class="form--contact">
-                    <div class="form-group form-group--50">
-                        <input type="text" name="name" placeholder="Imię" />
-                    </div>
-                    <div class="form-group form-group--50">
-                        <input type="text" name="surname" placeholder="Nazwisko" />
-                    </div>
-
-                    <div class="form-group">
+            <div class="form-group">
     <textarea
             name="message"
             placeholder="Wiadomość"
             rows="1"
     ></textarea>
-                    </div>
-
-                    <button class="btn" type="submit">Wyślij</button>
-                </form>
             </div>
-            <div class="bottom-line">
-                <span class="bottom-line--copy">Copyright &copy; 2018</span>
-                <div class="bottom-line--icons">
-                    <a href="#" class="btn btn--small"
-                    ><img src="/resources/images/icon-facebook.svg"
-                    /></a>
-                    <a href="#" class="btn btn--small"
-                    ><img src="/resources/images/icon-instagram.svg"
-                    /></a>
-                </div>
-            </div>
-        </footer>
 
-        <%--<script src="/resources/js/app.js"></script>--%>
+            <button class="btn" type="submit">Wyślij</button>
+        </form>
+    </div>
+    <div class="bottom-line">
+        <span class="bottom-line--copy">Copyright &copy; 2018</span>
+        <div class="bottom-line--icons">
+            <a href="#" class="btn btn--small"
+            ><img src="/resources/images/icon-facebook.svg"
+            /></a>
+            <a href="#" class="btn btn--small"
+            ><img src="/resources/images/icon-instagram.svg"
+            /></a>
+        </div>
+    </div>
+</footer>
+
+<%--<script src="/resources/js/app.js"></script>--%>
 </body>
 </html>

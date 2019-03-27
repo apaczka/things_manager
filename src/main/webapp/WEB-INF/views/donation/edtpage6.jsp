@@ -65,54 +65,66 @@
     </div>
 </header>
 
-<section class="form--steps">
-    <div class="form--steps-instructions">
-        <div class="form--steps-container">
-            <h3>Ważne!</h3>
-            <p data-step="1" class="active">
-                Uzupełnij szczegóły dotyczące Twoich rzeczy. Dzięki temu będziemy
-                wiedzieć komu najlepiej je przekazać.
-            </p>
-            <p data-step="2">
-                Uzupełnij szczegóły dotyczące Twoich rzeczy. Dzięki temu będziemy
-                wiedzieć komu najlepiej je przekazać.
-            </p>
-            <p data-step="3">
-                Jeśli wiesz komu chcesz pomóc, możesz wpisać nazwę tej organizacji w
-                wyszukiwarce. Możesz też filtrować organizacje po ich lokalizacji
-                bądź celu ich pomocy.
-            </p>
-            <p data-step="4">
-                Na podstawie Twoich kryteriów oraz rzeczy, które masz do oddania
-                wybraliśmy organizacje, którym możesz pomóc. Wybierz jedną, do
-                której trafi Twoja przesyłka.
-            </p>
-            <p data-step="5">Podaj adres oraz termin odbioru rzeczy.</p>
+
+<div class="mydiv">
+    <!-- STEP 6 -->
+
+
+    <div class="moja">
+
+
+        <h3 style="font-size: 25px">Podsumowanie Twojej darowizny</h3>
+        <div class="form-section">
+
+            <h4>Oddajesz:</h4>
+            <ul>
+                <li>
+                    <span class="bag"></span>
+                    <span class="summary--text"
+                    >${edt2.numberOfBags} worki ${edt1.category}</span
+                    >
+                </li>
+
+                <li>
+                    <span class="icon icon-hand"></span>
+                    <span class="summary--text"
+                    >Dla ${edt4.name} w ${edt4.location}</span
+                    >
+                </li>
+            </ul>
+        </div>
+
+
+        <h4>Adres odbioru:</h4>
+        <ul>
+            <li>${edt5.street}</li>
+            <li>${edt5.city}</li>
+            <li>${edt5.postalCode}</li>
+            <li>${edt5.phoneNumber}</li>
+        </ul>
+
+
+        <div class="form-section--column">
+            <h4>Termin odbioru:</h4>
+            <ul>
+                <li>${edt5.date}</li>
+                <li>${edt5.time}</li>
+                <li>Brak uwag</li>
+            </ul>
         </div>
     </div>
 
-    <div class="form--steps-container">
-        <div class="form--steps-counter">Krok <span>1</span>/5</div>
 
-
-        <%--<!-- STEP 1: class .active is switching steps -->--%>
-        <form:form method="post" modelAttribute="donation" action="/donation/page1">
-            <div data-step="1" class="active">
-                <h3>Zaznacz co chcesz oddać:</h3>
-
-                <div class="radioo">
-                    <form:radiobuttons items="${categories}" path="category" element="br"/>
-                </div>
-
-                <div class="form-group form-group--buttons">
-
-                    <button type="submit" class="btn next-step">Dalej</button>
-                </div>
-            </div>
-
-        </form:form>
+    <div class="form-group form-group--buttons">
+        <a href="/donation/page5/edt/edt">
+            <button type="button" class="btn prev-step">Wstecz</button>
+        </a>
+        <a href="/donation/page6/edt">
+            <button class="btn">Potwierdzam</button>
+        </a>
     </div>
-</section>
+</div>
+
 
 <footer>
     <div class="contact">

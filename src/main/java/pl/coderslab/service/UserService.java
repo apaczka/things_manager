@@ -19,10 +19,13 @@ public class UserService {
     private static final String DEFAULT_ROLE = "ROLE_USER";
     private static final String ADMIN_ROLE = "ROLE_ADMIN";
 
+
+
     @Autowired
     private UserRepository userRepository;
     @Autowired
     private UserRoleRepository userRoleRepository;
+
     private PasswordEncoder passwordEncoder;
 
     @Autowired
@@ -60,6 +63,7 @@ public class UserService {
     }
     
     public User findUserById(Long id){ return userRepository.findOne(id);}
+    public UserRole findRole(Long id){ return userRoleRepository.findById(id);}
 
     public UserRole findRole(String name){
        return userRoleRepository.findByRole(name);

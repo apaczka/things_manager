@@ -12,6 +12,7 @@ import pl.coderslab.model.UserRole;
 import pl.coderslab.repository.UserRepository;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Component
@@ -33,7 +34,7 @@ public class CustomUserDetailsService implements UserDetailsService{
         return userDetails;
     }
 
-    private Set<GrantedAuthority> convertAuthorities(Set<UserRole> userRoles) {
+    private Set<GrantedAuthority> convertAuthorities(List<UserRole> userRoles) {
         Set<GrantedAuthority> authorities = new HashSet<>();
         for(UserRole ur: userRoles) {
             authorities.add(new SimpleGrantedAuthority(ur.getRole()));

@@ -19,7 +19,9 @@
             border-bottom: 1px solid #ddd;
         }
 
-        tr:hover {background-color:#f5f5f5;}
+        tr:hover {
+            background-color: #f5f5f5;
+        }
     </style>
     <title>Document</title>
     <link rel="stylesheet" href="/resources/css/style.css"/>
@@ -28,13 +30,20 @@
 <header>
     <nav class="container container--70">
         <ul class="nav--actions">
-            <li><a href="/admin/mainpanel">Panel główny</a></li>
-            <li class="highlighted"><a href="/logout">Wyloguj</a></li>
+            <li><a href="/logout">Wyloguj</a></li>
         </ul>
 
         <ul>
             <li><a href="/">Start</a></li>
-            <li><a href="#">O co chodzi?</a></li>
+<c:choose>
+    <c:when test="${user.roles.equals('ROLE_ADMIN')}">
+            <li><a href="/admin/mainpanel">Panel główny</a></li>
+    </c:when>
+    <c:otherwise>
+        <li><a href="/user/mainpanel">Panel główny</a></li>
+
+    </c:otherwise>
+</c:choose>
             <li><a href="#">O nas</a></li>
             <li><a href="/institution/all">Fundacje i organizacje</a></li>
             <li><a href="#">Kontakt</a></li>
@@ -43,34 +52,54 @@
 </header>
 
 <div class="different">
-    <h2> Użytkownicy </h2>
+    <h2> Lista Twoich darów</h2>
     <table class="tt">
         <tr>
-            <th>Imię</th>
-            <th>Nazwisko</th>
-            <th>Email</th>
+            <th>Instytucja</th>
+            <th>Data przekazania</th>
+            <th>Data utworzenia wpisu</th>
+            <th>Liczba przekazanych worków</th>
+            <th>Dar przekazany</th>
             <th>Edytuj</th>
             <th>Usuń</th>
+            <th>Oznacz jako przekazany</th>
         </tr>
-        <c:forEach var="user" items="${users}">
+        <c:forEach var="donation" items="${donations}">
             <tr>
 
-                <td>${user.firstName}</td>
-                <td>${user.lastname}</td>
-                <td>${user.email}</td>
-                <td><a href="/user/edit/${user.id}"><img class="pencil" src="/resources/images/pencil.svg"/></a></td>
-                <td><a href="/user/remove/${user.id}"><img class="pencil" src="/resources/images/recycle-bin.svg"/></a></td>
+                <td>${donation.institution.name}</td>
+                <td>${donation.date}</td>
+                <td>${donation.created}</td>
+                <td>${donation.numberOfBags}</td>
+                <td>${donation.given}</td>
+               <c:choose>
+                <c:when test="${donation.given==false}">
 
+                <td><a href="/donation/page1/edt/${donation.id}"><img class="pencil" src="/resources/images/pencil.svg"/></a>
+                </td>
+                </c:when>
+                    <c:otherwise>
+                        <td></td>
+                    </c:otherwise>
+                </c:choose>
+
+                <td><a href="/donation/remove/${donation.id}"><img class="pencil"
+                                                                   src="/resources/images/recycle-bin.svg"/></a></td>
+                <c:choose>
+                    <c:when test="${donation.given==false}">
+                        <td><a href="/donation/mark/${donation.id}"><img class="pencil"
+                                                                         src="/resources/images/giving-love.svg"/></a>
+                        </td>
+                    </c:when>
+                    <c:otherwise>
+                        <td></td>
+                    </c:otherwise>
+                </c:choose>
 
             </tr>
         </c:forEach>
     </table>
 </div>
-<div class="button">
-
-    <a href="/user/add"><button class="btn">Dodaj użytkownika</button></a>
-</div>
-
 
 
 <footer>
@@ -79,10 +108,10 @@
         <h3>Formularz kontaktowy</h3>
         <form>
             <div class="form-group form-group--50">
-                <input type="text" name="name" placeholder="Imię" />
+                <input type="text" name="name" placeholder="Imię"/>
             </div>
             <div class="form-group form-group--50">
-                <input type="text" name="surname" placeholder="Nazwisko" />
+                <input type="text" name="surname" placeholder="Nazwisko"/>
             </div>
 
             <div class="form-group">

@@ -6,31 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>Document</title>
-    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="/resources/css/style.css"/>
 </head>
 <body>
 <header class="header--form-page">
     <nav class="container container--70">
         <ul class="nav--actions">
             <li class="logged-user">
-                Witaj Agata
+                Witaj ${user.firstName}
                 <ul class="dropdown">
-                    <li><a href="#">Profil</a></li>
-                    <li><a href="#">Administratorzy</a></li>
-                    <li><a href="#">Użytkownicy</a></li>
-                    <li><a href="#">Instytucje</a></li>
+                    <li><a href="/edit/${user.id}">Edytuj profil</a></li>
+                    <li><a href="/admin/all">Administratorzy</a></li>
+                    <li><a href="/user/all">Użytkownicy</a></li>
+                    <li><a href="/institution/all">Instytucje</a></li>
                     <li><a href="#">Dary</a></li>
-                    <li><a href="#">Wyloguj</a></li>
+                    <li><a href="/logout">Wyloguj</a></li>
                 </ul>
             </li>
         </ul>
 
         <ul>
-            <li><a href="#" class="btn btn--without-border active">Start</a></li>
+            <li><a href="/" class="btn btn--without-border active">Start</a></li>
             <li><a href="#" class="btn btn--without-border">O co chodzi?</a></li>
             <li><a href="#" class="btn btn--without-border">O nas</a></li>
             <li>
-                <a href="#" class="btn btn--without-border"
+                <a href="/institution/all" class="btn btn--without-border"
                 >Fundacje i organizacje</a
                 >
             </li>
@@ -284,13 +284,13 @@
     <div class="bottom-line">
         <span class="bottom-line--copy">Copyright &copy; 2018</span>
         <div class="bottom-line--icons">
-            <a href="#" class="btn btn--small"><img src="images/icon-facebook.svg"/></a> <a href="#"
+            <a href="#" class="btn btn--small"><img src="/resources/images/icon-facebook.svg"/></a> <a href="#"
                                                                                             class="btn btn--small"><img
-                src="images/icon-instagram.svg"/></a>
+                src="/resources/images/icon-instagram.svg"/></a>
         </div>
     </div>
 </footer>
 
-<script src="js/app.js"></script>
+<script src="/resources/js/app.js"></script>
 </body>
 </html>

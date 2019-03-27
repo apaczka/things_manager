@@ -92,100 +92,65 @@
     </div>
 
     <div class="form--steps-container">
-        <div class="form--steps-counter">Krok <span>5</span>/5</div>
-        <%--<!-- STEP 5 -->--%>
-        <form:form method="post" modelAttribute="donation" action="/donation/page5">
-        <div data-step="5" class="active">
-            <h3>Podaj adres oraz termin odbioru rzecz przez kuriera:</h3>
+        <div class="form--steps-counter">Krok <span>1</span>/5</div>
 
-            <div class="form-section form-section--columns">
-                <div class="form-section--column">
 
-                    <h4>Adres odbioru</h4>
+        <%--<!-- STEP 1: class .active is switching steps -->--%>
+        <form:form method="post" modelAttribute="donation" action="/donation/page1/edt">
+            <form:hidden path="id"/>
+            <div data-step="1" class="active">
+                <h3>Zaznacz co chcesz oddać:</h3>
 
-                    <div class="form-group form-group--inline">
-                    <label> Ulica <form:input path="street"/> </label>
-                    </div>
-
-                    <div class="form-group form-group--inline">
-                        <label> Miasto <form:input path="city"/> </label>
-
-                    </div>
-
-                    <div class="form-group form-group--inline">
-                        <label>
-                            Kod pocztowy <form:input path="postalCode"/>
-                        </label>
-                    </div>
-
-                    <div class="form-group form-group--inline">
-                        <label>
-                            Numer telefonu <form:input path="phoneNumber"/>
-                        </label>
-                    </div>
+                <div class="radioo">
+                    <form:radiobuttons items="${categories}" path="category" element="br"/>
                 </div>
 
-                <div class="form-section--column">
-                    <h4>Termin odbioru</h4>
-                    <div class="form-group form-group--inline">
-                        <label> Data <form:input type="date" path="date"/>  </label>
-                    </div>
+                <div class="form-group form-group--buttons">
 
-                    <div class="form-group form-group--inline">
-                        <label> Godzina <form:input type="time" path="time"/></label>
-                    </div>
-
-                    <div class="form-group form-group--inline">
-                        <label>
-                            Uwagi dla kuriera
-                            <form:input type="textarea" path="notes"/>
-                        </label>
-                    </div>
+                    <button type="submit" class="btn next-step">Dalej</button>
                 </div>
             </div>
-            <div class="form-group form-group--buttons">
-                <a href="/donation/page2/again"><button type="button" class="btn prev-step">Wstecz</button></a>
-                <button type="submit" class="btn next-step">Dalej</button>
-            </div>
-        </div>
+
         </form:form>
     </div>
-        <footer>
-            <div class="contact">
-                <h2>Skontaktuj się z nami</h2>
-                <h3>Formularz kontaktowy</h3>
-                <form class="form--contact">
-                    <div class="form-group form-group--50">
-                        <input type="text" name="name" placeholder="Imię" />
-                    </div>
-                    <div class="form-group form-group--50">
-                        <input type="text" name="surname" placeholder="Nazwisko" />
-                    </div>
+</section>
 
-                    <div class="form-group">
+<footer>
+    <div class="contact">
+        <h2>Skontaktuj się z nami</h2>
+        <h3>Formularz kontaktowy</h3>
+        <form class="form--contact">
+            <div class="form-group form-group--50">
+                <input type="text" name="name" placeholder="Imię"/>
+            </div>
+            <div class="form-group form-group--50">
+                <input type="text" name="surname" placeholder="Nazwisko"/>
+            </div>
+
+            <div class="form-group">
     <textarea
             name="message"
             placeholder="Wiadomość"
             rows="1"
     ></textarea>
-                    </div>
-
-                    <button class="btn" type="submit">Wyślij</button>
-                </form>
             </div>
-            <div class="bottom-line">
-                <span class="bottom-line--copy">Copyright &copy; 2018</span>
-                <div class="bottom-line--icons">
-                    <a href="#" class="btn btn--small"
-                    ><img src="/resources/images/icon-facebook.svg"
-                    /></a>
-                    <a href="#" class="btn btn--small"
-                    ><img src="/resources/images/icon-instagram.svg"
-                    /></a>
-                </div>
-            </div>
-        </footer>
 
-        <%--<script src="/resources/js/app.js"></script>--%>
+            <button class="btn" type="submit">Wyślij</button>
+        </form>
+    </div>
+    <div class="bottom-line">
+        <span class="bottom-line--copy">Copyright &copy; 2018</span>
+        <div class="bottom-line--icons">
+            <a href="#" class="btn btn--small"
+            ><img src="/resources/images/icon-facebook.svg"
+            /></a>
+            <a href="#" class="btn btn--small"
+            ><img src="/resources/images/icon-instagram.svg"
+            /></a>
+        </div>
+    </div>
+</footer>
+
+<%--<script src="/resources/js/app.js"></script>--%>
 </body>
 </html>

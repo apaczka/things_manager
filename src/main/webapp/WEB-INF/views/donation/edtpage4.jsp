@@ -92,100 +92,74 @@
     </div>
 
     <div class="form--steps-container">
-        <div class="form--steps-counter">Krok <span>5</span>/5</div>
-        <%--<!-- STEP 5 -->--%>
-        <form:form method="post" modelAttribute="donation" action="/donation/page5">
-        <div data-step="5" class="active">
-            <h3>Podaj adres oraz termin odbioru rzecz przez kuriera:</h3>
+        <div class="form--steps-counter">Krok <span>4</span>/5</div>
+        <%--<!-- STEP 4 -->--%>
+        <form:form method="post" modelAttribute="donation" action="/donation/page4/edt">
+            <div data-step="4" class="active">
 
-            <div class="form-section form-section--columns">
-                <div class="form-section--column">
+                <h3>Wybierz organizacje, której chcesz pomóc:</h3>
 
-                    <h4>Adres odbioru</h4>
+                <div class="form-group form-group--checkbox">
+                    <label>
+                        <input type="radio" name="organization" value="old" />
+                        <%--<span class="checkbox radio"></span>--%>
+                        <span class="description">
+    <div class="title">
 
-                    <div class="form-group form-group--inline">
-                    <label> Ulica <form:input path="street"/> </label>
-                    </div>
-
-                    <div class="form-group form-group--inline">
-                        <label> Miasto <form:input path="city"/> </label>
-
-                    </div>
-
-                    <div class="form-group form-group--inline">
-                        <label>
-                            Kod pocztowy <form:input path="postalCode"/>
-                        </label>
-                    </div>
-
-                    <div class="form-group form-group--inline">
-                        <label>
-                            Numer telefonu <form:input path="phoneNumber"/>
-                        </label>
-                    </div>
+        <%--<form:radiobuttons class="checkbox radio" path="institution" items="${institutions}" itemLabel="name" itemValue="id"/>--%>
+ <form:select path="institution">
+     <form:option value="0" label="wybierz instytucję"/>
+     <form:options items="${institutions}" itemLabel="name" itemValue="id"/>
+ </form:select>
+    </div>
+    </span>
+                    </label>
                 </div>
 
-                <div class="form-section--column">
-                    <h4>Termin odbioru</h4>
-                    <div class="form-group form-group--inline">
-                        <label> Data <form:input type="date" path="date"/>  </label>
-                    </div>
 
-                    <div class="form-group form-group--inline">
-                        <label> Godzina <form:input type="time" path="time"/></label>
-                    </div>
-
-                    <div class="form-group form-group--inline">
-                        <label>
-                            Uwagi dla kuriera
-                            <form:input type="textarea" path="notes"/>
-                        </label>
-                    </div>
+                <div class="form-group form-group--buttons">
+                    <a href="/donation/page2/again/edt"><button type="button" class="btn prev-step">Wstecz</button></a>
+                    <button type="submit" class="btn next-step">Dalej</button>
                 </div>
             </div>
-            <div class="form-group form-group--buttons">
-                <a href="/donation/page2/again"><button type="button" class="btn prev-step">Wstecz</button></a>
-                <button type="submit" class="btn next-step">Dalej</button>
-            </div>
-        </div>
         </form:form>
     </div>
-        <footer>
-            <div class="contact">
-                <h2>Skontaktuj się z nami</h2>
-                <h3>Formularz kontaktowy</h3>
-                <form class="form--contact">
-                    <div class="form-group form-group--50">
-                        <input type="text" name="name" placeholder="Imię" />
-                    </div>
-                    <div class="form-group form-group--50">
-                        <input type="text" name="surname" placeholder="Nazwisko" />
-                    </div>
+    <footer>
+        <div class="contact">
+            <h2>Skontaktuj się z nami</h2>
+            <h3>Formularz kontaktowy</h3>
+            <form class="form--contact">
+                <div class="form-group form-group--50">
+                    <input type="text" name="name" placeholder="Imię" />
+                </div>
+                <div class="form-group form-group--50">
+                    <input type="text" name="surname" placeholder="Nazwisko" />
+                </div>
 
-                    <div class="form-group">
+                <div class="form-group">
     <textarea
             name="message"
             placeholder="Wiadomość"
             rows="1"
     ></textarea>
-                    </div>
-
-                    <button class="btn" type="submit">Wyślij</button>
-                </form>
-            </div>
-            <div class="bottom-line">
-                <span class="bottom-line--copy">Copyright &copy; 2018</span>
-                <div class="bottom-line--icons">
-                    <a href="#" class="btn btn--small"
-                    ><img src="/resources/images/icon-facebook.svg"
-                    /></a>
-                    <a href="#" class="btn btn--small"
-                    ><img src="/resources/images/icon-instagram.svg"
-                    /></a>
                 </div>
-            </div>
-        </footer>
 
-        <%--<script src="/resources/js/app.js"></script>--%>
+                <button class="btn" type="submit">Wyślij</button>
+            </form>
+        </div>
+        <div class="bottom-line">
+            <span class="bottom-line--copy">Copyright &copy; 2018</span>
+            <div class="bottom-line--icons">
+                <a href="#" class="btn btn--small"
+                ><img src="/resources/images/icon-facebook.svg"
+                /></a>
+                <a href="#" class="btn btn--small"
+                ><img src="/resources/images/icon-instagram.svg"
+                /></a>
+            </div>
+        </div>
+    </footer>
+
+    <%--<script src="/resources/js/app.js"></script>--%>
 </body>
 </html>

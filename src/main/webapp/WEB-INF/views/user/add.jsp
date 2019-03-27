@@ -7,20 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>Document</title>
-    <link rel="stylesheet" href="../css/style.css"/>
+    <link rel="stylesheet" href="/resources/css/style.css"/>
 </head>
 <header>
     <nav class="container container--70">
         <ul class="nav--actions">
-            <li><a href="#">Zaloguj</a></li>
-            <li class="highlighted"><a href="#">Załóż konto</a></li>
+
+            <li class="highlighted"><a href="/admin/mainpanel">Panel główny</a></li>
+            <li><a href="/logout">Wyloguj</a></li>
         </ul>
 
         <ul>
-            <li><a href="#">Start</a></li>
+            <li><a href="/">Start</a></li>
             <li><a href="#">O co chodzi?</a></li>
             <li><a href="#">O nas</a></li>
-            <li><a href="#">Fundacje i organizacje</a></li>
+            <li><a href="/institution/all">Fundacje i organizacje</a></li>
             <li><a href="#">Kontakt</a></li>
         </ul>
     </nav>
@@ -48,8 +49,8 @@
 
 
     <div class="form-group form-group--buttons">
-    <a href="login.html" class="btn btn--without-border">Zaloguj się</a>
-    <button class="btn" type="submit">Załóż konto</button>
+    <%--<a href="login.html" class="btn btn--without-border">Panel główny</a>--%>
+    <button class="btn" type="submit">Dodaj</button>
     </div>
     </form:form>
     </section>
@@ -74,17 +75,17 @@
     ></textarea>
     </div>
 
-    <button class="btn" type="submit">Wyślij</button>
+    <button class="btn" type="submit">Dodaj</button>
     </form>
     </div>
     <div class="bottom-line">
     <span class="bottom-line--copy">Copyright &copy; 2018</span>
     <div class="bottom-line--icons">
     <a href="#" class="btn btn--small"
-    ><img src="images/icon-facebook.svg"
+    ><img src="/resources/images/icon-facebook.svg"
     /></a>
     <a href="#" class="btn btn--small"
-    ><img src="images/icon-instagram.svg"
+    ><img src="resources/images/icon-instagram.svg"
     /></a>
     </div>
     </div>

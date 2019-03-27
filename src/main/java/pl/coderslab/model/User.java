@@ -14,8 +14,7 @@ import java.util.Set;
 
 @Entity
 @Table(name="users")
-//@Component
-//@Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
+
 public class User {
 
     @Id
@@ -35,7 +34,7 @@ public class User {
     private String password;
 
     @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-    private Set<UserRole> roles = new HashSet<>();
+    private List <UserRole> roles = new ArrayList<>();
 
     @OneToMany(mappedBy = "user")
     private List<Donation> donations = new ArrayList<>();
@@ -48,11 +47,11 @@ public class User {
         this.donations = donations;
     }
 
-    public Set<UserRole> getRoles() {
+    public List<UserRole> getRoles() {
         return roles;
     }
 
-    public void setRoles(Set<UserRole> roles) {
+    public void setRoles(List<UserRole> roles) {
         this.roles = roles;
     }
 

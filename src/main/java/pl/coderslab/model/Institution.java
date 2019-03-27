@@ -21,8 +21,18 @@ public class Institution {
     private String location;
     @NotBlank
     private String description;
-    @OneToMany(mappedBy = "institution")
+    @NotBlank
+    private String address;
+    @OneToMany(mappedBy = "institution",fetch=FetchType.EAGER,cascade = CascadeType.MERGE)
     private List<Donation> donations = new ArrayList<>();
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
     public Long getId() {
         return id;

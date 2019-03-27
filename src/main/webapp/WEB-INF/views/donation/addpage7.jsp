@@ -17,10 +17,9 @@
             <li class="logged-user">
                 Witaj Agata
                 <ul class="dropdown">
-                    <li><a href="#">Profil</a></li>
-                    <li><a href="#">Ustawienia</a></li>
-                    <li><a href="#">Moje zbiórki</a></li>
-                    <li><a href="#">Wyloguj</a></li>
+                    <li><a href="/edit/${user.id}">Edytuj profil</a></li>
+                    <li><a href="/donation/all">Moje dary</a></li>
+                    <li><a href="/logout">Wyloguj</a></li>
                 </ul>
             </li>
         </ul>
@@ -30,7 +29,7 @@
             <li><a href="#" class="btn btn--without-border">O co chodzi?</a></li>
             <li><a href="#" class="btn btn--without-border">O nas</a></li>
             <li>
-                <a href="#" class="btn btn--without-border"
+                <a href="/institution/all" class="btn btn--without-border"
                 >Fundacje i organizacje</a
                 >
             </li>
@@ -66,45 +65,23 @@
     </div>
 </header>
 
-<section class="form--steps">
-    <div class="form--steps-instructions">
-        <div class="form--steps-container">
-            <h3>Ważne!</h3>
-            <p data-step="1" class="active">
-                Uzupełnij szczegóły dotyczące Twoich rzeczy. Dzięki temu będziemy
-                wiedzieć komu najlepiej je przekazać.
-            </p>
-            <p data-step="2">
-                Uzupełnij szczegóły dotyczące Twoich rzeczy. Dzięki temu będziemy
-                wiedzieć komu najlepiej je przekazać.
-            </p>
-            <p data-step="3">
-                Jeśli wiesz komu chcesz pomóc, możesz wpisać nazwę tej organizacji w
-                wyszukiwarce. Możesz też filtrować organizacje po ich lokalizacji
-                bądź celu ich pomocy.
-            </p>
-            <p data-step="4">
-                Na podstawie Twoich kryteriów oraz rzeczy, które masz do oddania
-                wybraliśmy organizacje, którym możesz pomóc. Wybierz jedną, do
-                której trafi Twoja przesyłka.
-            </p>
-            <p data-step="5">Podaj adres oraz termin odbioru rzeczy.</p>
-        </div>
-    </div>
 
-    <div class="form--steps-container">
-        <div class="form--steps-counter">Krok <span>2</span>/5</div>
+
+
+    <div class="mydiv">
+
         <!-- STEP 7 -->
         <div data-step="7">
-            <h2>
-                Dziękujemy za przesłanie formularza Na maila prześlemy wszelkie
+            <h2 class="aaa">
+                Dziękujemy za przesłanie formularza.<br>
+                Na maila prześlemy wszelkie
                 informacje o odbiorze.
             </h2>
         </div>
 
     </div>
-</section>
 
+</div>
         <footer>
             <div class="contact">
                 <h2>Skontaktuj się z nami</h2>

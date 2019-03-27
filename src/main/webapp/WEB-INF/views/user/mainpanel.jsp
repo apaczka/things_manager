@@ -15,10 +15,9 @@
             <li class="logged-user">
                 Witaj ${user.firstName}
                 <ul class="dropdown">
-                    <li><a href="#">Profil</a></li>
-                    <li><a href="#">Ustawienia</a></li>
-                    <li><a href="#">Moje zbiórki</a></li>
-                    <li><a href="#">Wyloguj</a></li>
+                    <li><a href="/user/edit/${user.id}">Edytuj profil</a>
+                    <li><a href="/donation/all">Moje dary</a></li>
+                    <li><a href="/logout">Wyloguj</a></li>
                 </ul>
             </li>
         </ul>

@@ -20,6 +20,8 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import pl.coderslab.converter.DateConverter;
 import pl.coderslab.converter.InstitutionConverter;
+import pl.coderslab.converter.RoleConverter;
+import pl.coderslab.security.SimpleAuthenticationSuccessHandler;
 
 
 import javax.persistence.EntityManagerFactory;
@@ -61,6 +63,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     public void addFormatters(FormatterRegistry registry) {
         registry.addConverter(getInstitutionConverter());
         registry.addConverter(getDateConverter());
+        registry.addConverter(getRoleConverter());
 
     }
     @Bean
@@ -71,6 +74,9 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     public DateConverter getDateConverter(){
         return new DateConverter();
     }
+    @Bean
+    public RoleConverter getRoleConverter(){ return new RoleConverter();}
+
 
     @Bean(name="localeResolver")
     public LocaleContextResolver getLocaleContextResolver() {

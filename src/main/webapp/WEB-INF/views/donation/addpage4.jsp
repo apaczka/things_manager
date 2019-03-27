@@ -15,12 +15,11 @@
     <nav class="container container--70">
         <ul class="nav--actions">
             <li class="logged-user">
-                Witaj Agata
+                Witaj ${user.firstName}
                 <ul class="dropdown">
-                    <li><a href="#">Profil</a></li>
-                    <li><a href="#">Ustawienia</a></li>
-                    <li><a href="#">Moje zbiórki</a></li>
-                    <li><a href="#">Wyloguj</a></li>
+                    <li><a href="/edit/${user.id}">Edytuj profil</a></li>
+                    <li><a href="/donation/all">Moje dary</a></li>
+                    <li><a href="/logout">Wyloguj</a></li>
                 </ul>
             </li>
         </ul>
@@ -30,7 +29,7 @@
             <li><a href="#" class="btn btn--without-border">O co chodzi?</a></li>
             <li><a href="#" class="btn btn--without-border">O nas</a></li>
             <li>
-                <a href="#" class="btn btn--without-border"
+                <a href="/institution/all" class="btn btn--without-border"
                 >Fundacje i organizacje</a
                 >
             </li>
@@ -96,33 +95,35 @@
         <div class="form--steps-counter">Krok <span>4</span>/5</div>
         <%--<!-- STEP 4 -->--%>
         <form:form method="post" modelAttribute="donation" action="/donation/page4">
-        <%--<div data-step="4">--%>
+        <div data-step="4" class="active">
 
             <h3>Wybierz organizacje, której chcesz pomóc:</h3>
 
-            <%--<div class="form-group form-group--checkbox">--%>
+            <div class="form-group form-group--checkbox">
                 <label>
                     <input type="radio" name="organization" value="old" />
-                    <span class="checkbox radio"></span>
+                    <%--<span class="checkbox radio"></span>--%>
                     <span class="description">
     <div class="title">
-    <form:select path="institution">
-        <form:option value="0" label="--Please Select--"/>
-        <form:options items="${institutions}" itemLabel="name" itemValue="id"/>
-    </form:select>
+
+        <%--<form:radiobuttons class="checkbox radio" path="institution" items="${institutions}" itemLabel="name" itemValue="id"/>--%>
+<form:select path="institution">
+    <form:option value="0" label="wybierz instytucję"/>
+    <form:options items="${institutions}" itemLabel="name" itemValue="id"/>
+</form:select>
     </div>
-    </span>
+                    </span>
                 </label>
             </div>
 
 
             <div class="form-group form-group--buttons">
-                <a href="/donation/page2"><button type="button" class="btn prev-step">Wstecz</button></a>
+                <a href="/donation/page2/again"><button type="button" class="btn prev-step">Wstecz</button></a>
                 <button type="submit" class="btn next-step">Dalej</button>
             </div>
         </div>
         </form:form>
-
+    </div>
         <footer>
             <div class="contact">
                 <h2>Skontaktuj się z nami</h2>

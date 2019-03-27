@@ -15,12 +15,11 @@
     <nav class="container container--70">
         <ul class="nav--actions">
             <li class="logged-user">
-                Witaj Agata
+                Witaj ${user.firstName}
                 <ul class="dropdown">
-                    <li><a href="#">Profil</a></li>
-                    <li><a href="#">Ustawienia</a></li>
-                    <li><a href="#">Moje zbiórki</a></li>
-                    <li><a href="#">Wyloguj</a></li>
+                    <li><a href="/edit/${user.id}">Edytuj profil</a></li>
+                    <li><a href="/donation/all">Moje dary</a></li>
+                    <li><a href="/logout">Wyloguj</a></li>
                 </ul>
             </li>
         </ul>
@@ -30,7 +29,7 @@
             <li><a href="#" class="btn btn--without-border">O co chodzi?</a></li>
             <li><a href="#" class="btn btn--without-border">O nas</a></li>
             <li>
-                <a href="#" class="btn btn--without-border"
+                <a href="/institution/all" class="btn btn--without-border"
                 >Fundacje i organizacje</a
                 >
             </li>
@@ -96,12 +95,12 @@
         <div class="form--steps-counter">Krok <span>3</span>/5</div>
         <%--<!-- STEP 3 -->--%>
         <form:form method="post" modelAttribute="institution" action="/donation/page3">
-        <%--<div data-step="3">--%>
-            <h3>Lokalizacja:</h3>
+        <div data-step="3" class="active">
+            <h3>Lokalizacja fundacji:</h3>
 
-            <%--<div class="form-group form-group--dropdown">--%>
+            <div class="form-group form-group--dropdown">
                 <form:select path="location" >
-                    <form:option value="0" label="--Please Select--"/>
+                    <form:option value="0" label="--Wybierz--"/>
                     <form:options items="${locations}"/>
                 </form:select>
             </div>
@@ -109,8 +108,8 @@
             <div class="form-section">
                 <h4>Komu chcesz pomóc?</h4>
                 <div class="form-section--checkboxes">
-                    <div class="form-group form-group--checkbox">
-                        <form:radiobuttons items="${helps}" path="description"/>
+                    <div class="radioo">
+                        <form:radiobuttons items="${helps}" path="description" element="br"/>
                     </div>
                 </div>
             </div>
@@ -118,7 +117,7 @@
             <div class="form-section">
                 <h4>Wpisz nazwę konkretnej organizacji (opcjonalnie)</h4>
                 <div class="form-group">
-                    <form:input path="name"/>
+                    <form:textarea  rows="4" path="name"/>
                 </div>
             </div>
 
@@ -128,6 +127,7 @@
             </div>
         </div>
         </form:form>
+    </div>
 
     <footer>
         <div class="contact">

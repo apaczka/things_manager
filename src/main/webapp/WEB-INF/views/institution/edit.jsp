@@ -19,16 +19,17 @@
         <ul>
             <li><a href="/">Start</a></li>
             <li><a href="#">O co chodzi?</a></li>
-            <li><a href="#">O nas</a></li>
-            <li><a href="/institution/all">Fundacje i organizacje</a></li>
+            <li><a href="/institution/all">O nas</a></li>
+            <li><a href="#">Fundacje i organizacje</a></li>
             <li><a href="#">Kontakt</a></li>
         </ul>
     </nav>
 </header>
 
 <section class="login-page">
-    <h2>Dodaj instytucję</h2>
-    <form:form method="post" modelAttribute="institution">
+    <h2>Edytuj instytucję</h2>
+    <form:form method="post" modelAttribute="institution" action="/institution/edit">
+        <form:hidden path="id"/>
         <div class="form-group">
             <form:input path="name" placeholder="nazwa"/>
             <form:errors path="name" cssClass="error" element="div"/>
@@ -50,7 +51,7 @@
         </div>
 
         <div class="form-group form-group--buttons">
-            <button class="btn" type="submit">Dodaj</button>
+            <button class="btn" type="submit">Zmień</button>
         </div>
     </form:form>
 </section>

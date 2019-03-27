@@ -1,12 +1,18 @@
 package pl.coderslab.model;
 
+import org.hibernate.annotations.Fetch;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
+import pl.coderslab.validator.AddressValidator;
+import pl.coderslab.validator.CategoryValidator;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.groups.Default;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="donations")
@@ -15,31 +21,41 @@ public class Donation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotBlank
+    @NotBlank(groups = {CategoryValidator.class, Default.class})
     private String category;
+
     @Column(name="number_of_bags")
     @NotNull
     private int numberOfBags;
-    @NotBlank
+    @NotBlank (groups = {AddressValidator.class, Default.class})
     private String street;
-    @NotBlank
+    @NotBlank(groups = {AddressValidator.class, Default.class})
     private String city;
     @Column(name="postal_code")
-    @NotBlank
+    @NotBlank (groups = {AddressValidator.class, Default.class})
     private String postalCode;
     @Column(name="phone_number")
-    @NotNull
+    @NotNull (groups = {AddressValidator.class, Default.class})
     private int phoneNumber;
-    @NotNull
+    @NotNull (groups = {AddressValidator.class, Default.class})
     private LocalDate date;
-    @NotNull
+    @NotNull (groups = {AddressValidator.class, Default.class})
     private LocalTime time;
     private LocalDate created;
     private boolean given;
+    private String notes;
     @ManyToOne
     private User user;
     @ManyToOne
     private Institution institution;
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
 
     public Long getId() {
         return id;
@@ -157,8 +173,11 @@ public class Donation {
                 ", phoneNumber=" + phoneNumber +
                 ", date=" + date +
                 ", time=" + time +
+                ", created=" + created +
+                ", given=" + given +
+                ", notes='" + notes + '\'' +
                 ", user=" + user +
-                ", institution=" + institution +
+                ", institution=" + institution.getName() +
                 '}';
     }
 }

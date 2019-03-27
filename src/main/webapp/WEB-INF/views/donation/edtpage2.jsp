@@ -1,3 +1,19 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: anna
+  Date: 27.03.19
+  Time: 09:16
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -92,100 +108,71 @@
     </div>
 
     <div class="form--steps-container">
-        <div class="form--steps-counter">Krok <span>5</span>/5</div>
-        <%--<!-- STEP 5 -->--%>
-        <form:form method="post" modelAttribute="donation" action="/donation/page5">
-        <div data-step="5" class="active">
-            <h3>Podaj adres oraz termin odbioru rzecz przez kuriera:</h3>
+        <div class="form--steps-counter">Krok <span>2</span>/5</div>
+        <%--<!-- STEP 2 -->--%>
 
-            <div class="form-section form-section--columns">
-                <div class="form-section--column">
+        <form:form method="post" modelAttribute="donation" action="/donation/page2/edt">
 
-                    <h4>Adres odbioru</h4>
 
-                    <div class="form-group form-group--inline">
-                    <label> Ulica <form:input path="street"/> </label>
-                    </div>
+        <div data-step="2" class="active">
 
-                    <div class="form-group form-group--inline">
-                        <label> Miasto <form:input path="city"/> </label>
+            <h3>Podaj liczbę 60l worków, w które spakowałeś/aś rzeczy:</h3>
 
-                    </div>
+            <div class="radioo">
+                <label>
+                    Liczba 60l worków:
+                    <form:input type="number" path="numberOfBags" step="1" min="1"/>
+                </label>
 
-                    <div class="form-group form-group--inline">
-                        <label>
-                            Kod pocztowy <form:input path="postalCode"/>
-                        </label>
-                    </div>
-
-                    <div class="form-group form-group--inline">
-                        <label>
-                            Numer telefonu <form:input path="phoneNumber"/>
-                        </label>
-                    </div>
-                </div>
-
-                <div class="form-section--column">
-                    <h4>Termin odbioru</h4>
-                    <div class="form-group form-group--inline">
-                        <label> Data <form:input type="date" path="date"/>  </label>
-                    </div>
-
-                    <div class="form-group form-group--inline">
-                        <label> Godzina <form:input type="time" path="time"/></label>
-                    </div>
-
-                    <div class="form-group form-group--inline">
-                        <label>
-                            Uwagi dla kuriera
-                            <form:input type="textarea" path="notes"/>
-                        </label>
-                    </div>
-                </div>
             </div>
+
             <div class="form-group form-group--buttons">
-                <a href="/donation/page2/again"><button type="button" class="btn prev-step">Wstecz</button></a>
+                <a href="/donation/page1/edt/edt"> <button type="button"class="btn prev-step">Wstecz</button></a>
                 <button type="submit" class="btn next-step">Dalej</button>
             </div>
-        </div>
-        </form:form>
-    </div>
-        <footer>
-            <div class="contact">
-                <h2>Skontaktuj się z nami</h2>
-                <h3>Formularz kontaktowy</h3>
-                <form class="form--contact">
-                    <div class="form-group form-group--50">
-                        <input type="text" name="name" placeholder="Imię" />
-                    </div>
-                    <div class="form-group form-group--50">
-                        <input type="text" name="surname" placeholder="Nazwisko" />
-                    </div>
 
-                    <div class="form-group">
+
+            </form:form>
+
+        </div>
+    </div>
+
+    <footer>
+        <div class="contact">
+            <h2>Skontaktuj się z nami</h2>
+            <h3>Formularz kontaktowy</h3>
+            <form class="form--contact">
+                <div class="form-group form-group--50">
+                    <input type="text" name="name" placeholder="Imię" />
+                </div>
+                <div class="form-group form-group--50">
+                    <input type="text" name="surname" placeholder="Nazwisko" />
+                </div>
+
+                <div class="form-group">
     <textarea
             name="message"
             placeholder="Wiadomość"
             rows="1"
     ></textarea>
-                    </div>
-
-                    <button class="btn" type="submit">Wyślij</button>
-                </form>
-            </div>
-            <div class="bottom-line">
-                <span class="bottom-line--copy">Copyright &copy; 2018</span>
-                <div class="bottom-line--icons">
-                    <a href="#" class="btn btn--small"
-                    ><img src="/resources/images/icon-facebook.svg"
-                    /></a>
-                    <a href="#" class="btn btn--small"
-                    ><img src="/resources/images/icon-instagram.svg"
-                    /></a>
                 </div>
-            </div>
-        </footer>
 
-        <%--<script src="/resources/js/app.js"></script>--%>
+                <button class="btn" type="submit">Wyślij</button>
+            </form>
+        </div>
+        <div class="bottom-line">
+            <span class="bottom-line--copy">Copyright &copy; 2018</span>
+            <div class="bottom-line--icons">
+                <a href="#" class="btn btn--small"
+                ><img src="/resources/images/icon-facebook.svg"
+                /></a>
+                <a href="#" class="btn btn--small"
+                ><img src="/resources/images/icon-instagram.svg"
+                /></a>
+            </div>
+        </div>
+    </footer>
+
+    <%--<script src="/resources/js/app.js"></script>--%>
 </body>
 </html>

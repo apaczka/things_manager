@@ -15,12 +15,11 @@
     <nav class="container container--70">
         <ul class="nav--actions">
             <li class="logged-user">
-                Witaj Agata
+                Witaj ${user.firstName}
                 <ul class="dropdown">
-                    <li><a href="#">Profil</a></li>
-                    <li><a href="#">Ustawienia</a></li>
-                    <li><a href="#">Moje zbiórki</a></li>
-                    <li><a href="#">Wyloguj</a></li>
+                    <li><a href="/edit/${user.id}">Edytuj profil</a></li>
+                    <li><a href="/donation/all">Moje dary</a></li>
+                    <li><a href="/logout">Wyloguj</a></li>
                 </ul>
             </li>
         </ul>
@@ -30,7 +29,7 @@
             <li><a href="#" class="btn btn--without-border">O co chodzi?</a></li>
             <li><a href="#" class="btn btn--without-border">O nas</a></li>
             <li>
-                <a href="#" class="btn btn--without-border"
+                <a href="/institution/all" class="btn btn--without-border"
                 >Fundacje i organizacje</a
                 >
             </li>
@@ -95,23 +94,31 @@
     <div class="form--steps-container">
         <div class="form--steps-counter">Krok <span>2</span>/5</div>
         <%--<!-- STEP 2 -->--%>
+
         <form:form method="post" modelAttribute="donation" action="/donation/page2">
-        <%--<div data-step="2">--%>
+
+        <div data-step="2" class="active">
+
             <h3>Podaj liczbę 60l worków, w które spakowałeś/aś rzeczy:</h3>
 
-            <%--<div class="form-group form-group--inline">--%>
+            <div class="radioo">
                 <label>
                     Liczba 60l worków:
                     <form:input type="number" path="numberOfBags" step="1" min="1"/>
                 </label>
+
             </div>
 
             <div class="form-group form-group--buttons">
                 <a href="/donation/page1/edit"> <button type="button"class="btn prev-step">Wstecz</button></a>
                 <button type="submit" class="btn next-step">Dalej</button>
             </div>
-        </div>
+
+
         </form:form>
+
+        </div>
+    </div>
 
         <footer>
             <div class="contact">

@@ -28,15 +28,15 @@
 <header>
     <nav class="container container--70">
         <ul class="nav--actions">
-            <li><a href="#">Zaloguj</a></li>
-            <li class="highlighted"><a href="#">Załóż konto</a></li>
+            <li><a href="/admin/mainpanel">Panel główny</a></li>
+            <li class="highlighted"><a href="/logout">Wyloguj</a></li>
         </ul>
 
         <ul>
-            <li><a href="#">Start</a></li>
+            <li><a href="/">Start</a></li>
             <li><a href="#">O co chodzi?</a></li>
             <li><a href="#">O nas</a></li>
-            <li><a href="#">Fundacje i organizacje</a></li>
+            <li><a href="/institution/all">Fundacje i organizacje</a></li>
             <li><a href="#">Kontakt</a></li>
         </ul>
     </nav>
@@ -58,8 +58,8 @@
             <td>${admin.firstName}</td>
             <td>${admin.lastname}</td>
             <td>${admin.email}</td>
-            <td><a href="/admin/edit/${admin.id}"><img src="/resources/images/pencil.svg"/></a></td>
-            <td><a href="/admin/remove/${admin.id}"><img src="/resources/images/reycle-bin.svg"/></a></td>
+            <td><a href="/admin/edit/${admin.id}"><img class="pencil" src="/resources/images/pencil.svg"/></a></td>
+            <td><a href="/admin/remove/${admin.id}"><img class="pencil" src="/resources/images/recycle-bin.svg"/></a></td>
 
 
       </tr>

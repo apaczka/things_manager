@@ -7,29 +7,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>Document</title>
-    <link rel="stylesheet" href="../css/style.css"/>
+    <link rel="stylesheet" href="/resources/css/style.css"/>
 </head>
 <header>
     <nav class="container container--70">
         <ul class="nav--actions">
-            <li><a href="#">Edytuj</a></li>
-            <li class="highlighted"><a href="#">Załóż konto</a></li>
+            <c:choose>
+                <c:when test="${user.roles.equals('ROLE_ADMIN')}">
+                    <li><a href="/admin/mainpanel">Panel główny</a></li>
+                </c:when>
+                <c:otherwise>
+                    <li><a href="/user/mainpanel">Panel główny</a></li>
+                </c:otherwise>
+            </c:choose>
+            <li class="highlighted"><a href="/logout">Wyloguj</a></li>
         </ul>
 
         <ul>
-            <li><a href="#">Start</a></li>
+            <li><a href="/">Start</a></li>
             <li><a href="#">O co chodzi?</a></li>
             <li><a href="#">O nas</a></li>
-            <li><a href="#">Fundacje i organizacje</a></li>
+            <li><a href="/institution/all">Fundacje i organizacje</a></li>
             <li><a href="#">Kontakt</a></li>
         </ul>
     </nav>
 </header>
 
 <section class="login-page">
-    <h2>Załóż konto</h2>
-    <form:form method="post" modelAttribute="user">
+    <h2>Edycja danych</h2>
+    <form:form method="post" modelAttribute="user" action="/user/edit">
         <form:hidden path="id"/>
+        <form:hidden path="roles" value="${roleId}"/>
         <div class="form-group">
             <form:input path="firstName" placeholder="imię"/>
             <form:errors path="firstName" cssClass="error" element="div"/>
@@ -43,14 +51,15 @@
             <form:errors path="email" cssClass="error" element="div"/>
         </div>
         <div class="form-group">
+            <p> Uwaga! w celu zapisu danych KONIECZNE jest podanie hasła!!!</p>
             <form:input type="password" path="password" placeholder="Hasło" />
             <form:errors path="password" cssClass="error" element="div"/>
         </div>
 
 
         <div class="form-group form-group--buttons">
-            <a href="login.html" class="btn btn--without-border">Zaloguj się</a>
-            <button class="btn" type="submit">Załóż konto</button>
+            <%--<a href="login.html" class="btn btn--without-border">Zaloguj się</a>--%>
+            <button class="btn" type="submit">Zapisz</button>
         </div>
     </form:form>
 </section>
@@ -82,10 +91,10 @@
         <span class="bottom-line--copy">Copyright &copy; 2018</span>
         <div class="bottom-line--icons">
             <a href="#" class="btn btn--small"
-            ><img src="images/icon-facebook.svg"
+            ><img src="/resources/images/icon-facebook.svg"
             /></a>
             <a href="#" class="btn btn--small"
-            ><img src="images/icon-instagram.svg"
+            ><img src="/resources/images/icon-instagram.svg"
             /></a>
         </div>
     </div>
