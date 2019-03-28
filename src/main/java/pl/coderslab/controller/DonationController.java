@@ -82,7 +82,10 @@ if(result.hasErrors()){
     }
 
     @PostMapping("/page1/edt")
-    public String edtPage1(@ModelAttribute Donation donation, Model model) {
+    public String edtPage1(@Validated({CategoryValidator.class}) Donation donation, BindingResult result,Model model) {
+        if (result.hasErrors()){
+            return "donation/edtpage1";
+        }
         model.addAttribute("edt1", donation);
         Donation donation1 = donationService.findById(donation.getId());
         model.addAttribute("donation", donation1);
@@ -239,8 +242,6 @@ if(result.hasErrors()){
     }
 
 
-
-
     @PostMapping("/page5")
     public String addpage5(@Validated({AddressValidator.class}) Donation donation, BindingResult result, Model model) {
 if(result.hasErrors()){
@@ -261,8 +262,10 @@ if(result.hasErrors()){
     }
 
     @PostMapping("/page5/edt")
-    public String edtpage5(@ModelAttribute Donation donation, Model model) {
-
+    public String edtpage5(@Validated({AddressValidator.class}) Donation donation, BindingResult result, Model model) {
+if(result.hasErrors()){
+    return "donation/addpage5";
+}
         model.addAttribute("edt5", donation);
         return "donation/edtpage6";
     }
